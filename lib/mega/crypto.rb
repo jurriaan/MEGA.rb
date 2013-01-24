@@ -6,7 +6,7 @@ module MEGA
       def prepare_key array
         packing = 'l>*'
         pkey = [0x93C467E3,0x7DB0C7A4,0xD1BE3F81,0x0152CB56]
-        65536.downto(1) do |r|
+        65536.times do
           0.step(array.length-1, 4) do |j|
             key = [0,0,0,0]
             0.upto(3) do |i|
