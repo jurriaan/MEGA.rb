@@ -31,7 +31,7 @@ module MEGA
       body = EAGAIN
       retries = 4
       while body == EAGAIN do
-        @response = Net::HTTP.start(@uri.host, @uri.port, use_ssl: true) {|http| http.request(req) }
+        @response = Net::HTTP.start(@uri.host, @uri.port, use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE) {|http| http.request(req) }
         body = @response.body
         begin
           result = MEGA::Response.new(JSON.parse(body))
